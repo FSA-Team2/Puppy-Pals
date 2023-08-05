@@ -6,6 +6,8 @@ import { createPlayer } from '../API';
 const NewPlayerForm = () => {
   const [name, setName] = useState('');
   const [age, setAge] = useState('');
+  const [breed, setBreed] = useState('');
+
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -13,6 +15,7 @@ const NewPlayerForm = () => {
     const newPlayerData = {
       name: name,
       age: age,
+      breed: breed,
     };
 
     try {
@@ -45,7 +48,15 @@ const NewPlayerForm = () => {
             onChange={(e) => setAge(e.target.value)}
           />
         </div>
-        
+        <div>
+          <label htmlFor="breed">Breed:</label>
+          <input
+            type="text"
+            id="breed"
+            value={breed}
+            onChange={(e) => setBreed(e.target.value)}
+          />
+        </div>
         <button type="submit">Submit</button>
       </form>
     </div>
