@@ -1,14 +1,22 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import App from './App.jsx'
-import './index.css'
-import {BrowserRouter} from "react-router-dom";
+//main.jsx is the entry point for the application. It renders the App component into the root element of the HTML document.
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import App from './App.jsx';
+import './index.css';
 
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+function createRoutes() {
+  return (
     <BrowserRouter>
-      <App></App>
+      <Routes>
+        {}
+        <Route path="/" element={<App />} />
+      </Routes>
     </BrowserRouter>
-  </React.StrictMode>
-);
+  );
+}
+
+ReactDOM.render(createRoutes(), document.getElementById('root'))
+

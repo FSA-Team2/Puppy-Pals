@@ -1,3 +1,5 @@
+//AllPlayers.jsx is the component that renders all the players in the database. It also renders the SinglePlayer component when a player is clicked on. 
+
 import React, { useState, useEffect } from "react";
 import SinglePlayer from "./SinglePlayer";
 import { Routes, Route, Link } from "react-router-dom";
@@ -20,13 +22,17 @@ const AllPlayers = () => {
 
   return (
     <div>
-      {playersData.map((player) => (
-        <div className="button" key={player.id}>
-          <Link to={`/players/${player.id}`}>
-            <h4>{player.name}</h4>
-          </Link>
-        </div>
-      ))}
+      {Array.isArray(playersData) ? (
+        playersData.map((player) => (
+          <div className="button" key={player.id}>
+            <Link to={`/players/${player.id}`}>
+              <h4>{player.name}</h4>
+            </Link>
+          </div>
+        ))
+      ) : (
+        <div>Loading...</div>
+      )}
 
       <Routes>
         <Route path="/players/:id" element={<SinglePlayer />} />

@@ -1,3 +1,5 @@
+//navbar.jsx for all pages
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import AllPlayers from './AllPlayers';

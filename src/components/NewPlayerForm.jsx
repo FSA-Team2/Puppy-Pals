@@ -1,3 +1,5 @@
+//newPlayerForm.jsx is the component that renders the form to create a new player. It also handles the form submission and makes the API call to create the new player in the database.
+
 import React, { useState } from 'react';
 import { createPlayer } from '../API';
 
