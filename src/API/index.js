@@ -1,18 +1,4 @@
-const API = `https://fsa-puppy-bowl.herokuapp.com/api/2302-ACC-PT-WEB-PT-A/players`;
-
-
-//const API = `https://fsa-puppy-bowl.herokuapp.com/2302-acc-pt-web-pt-a/`;
-const API = 'https://fsa-puppy-bowl.herokuapp.com/api/2302-ACC-PT-WEB-PT-A/players';
-export async function fetchPlayers() {
-  try {
-    const response = await fetch(API);
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error("Error fetching player data", error);
-    throw error;
-  }
-}
+const API = `https://fsa-puppy-bowl.herokuapp.com/api/2302-ACC-PT-WEB-PT-Aaa/players`;
 
 
       
@@ -33,7 +19,6 @@ export async function fetchPlayers() {
 }
 
 
-
 export async function createPlayer(playerData) {
   try {
     const response = await fetch(API, {
@@ -49,9 +34,18 @@ export async function createPlayer(playerData) {
     console.error("Error creating player", error);
     throw error;
   }
-
 }
 
-export default fetchPlayers;
-
+export async function deletePlayer(playerId) {
+  try {
+    const response = await fetch(`${API}/${playerId}`, {
+      method: 'DELETE',
+    });
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error deleting player", error);
+    throw error;
+  }
+}
 
