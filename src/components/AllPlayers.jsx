@@ -20,47 +20,31 @@ const AllPlayers = () => {
 
   return (
     <div>
-      {playersData.map((player) => (
-        <div className="button" key={player.id}>
-          <Link to={`/players/${player.id}`}>
-            <h4>{player.name}</h4>
-          </Link>
-        </div>
-      ))}
-
-      {Array.isArray(playersData) ? (
-        playersData.map((player) => (
-          <div className="button" key={player.id}>
-            <Link to={`/players/${player.id}`}>
-              <h4>{player.name}</h4>
-            </Link>
-          </div>
-        ))
+      <h2>AllPlayers</h2>
+      {playersData.length === 0 ? (
+        <div>If you see this message. Cat Broke something...</div>
       ) : (
-        <div>Loading...</div>
+        <ul>
+          {playersData.map((player) => (
+            <li key={player.id}>
+              <Link to={`/players/${player.id}`}>
+                <img src={player.imageUrl} alt={player.name} />
+                <h4>{player.name}</h4>
+              </Link>
+            </li>
+          ))}
+        </ul>
       )}
-
       <Routes>
         <Route path="/players/:id" element={<SinglePlayer />} />
-        </Routes>
+      </Routes>
     </div>
   );
 };
+
 export default AllPlayers;
- 2  
-      
-      
-      {/* return (
-      <div>
-        {playersData.map((player) => {
-          return (
-            <ul>
-
-
-            <li key={player.id}>{player.name}</li>
 
 
 
-            </ul>
-             */}
+
 

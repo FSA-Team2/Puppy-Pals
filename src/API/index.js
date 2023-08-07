@@ -1,4 +1,4 @@
-const API = `https://fsa-puppy-bowl.herokuapp.com/api/2302-ACC-PT-WEB-PT-AA/players`;
+const API = `https://fsa-puppy-bowl.herokuapp.com/api/2302-ACC-PT-WEB-PT-Aaa/players`;
 
 
       
@@ -35,5 +35,3 @@ export async function createPlayer(playerData) {
     throw error;
   }
 }
-
-export default fetchPlayers;
