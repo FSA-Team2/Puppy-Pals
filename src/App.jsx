@@ -1,4 +1,5 @@
-// import { useState } from 'react'
+//App.jsx is the main file that renders all the components
+import React from 'react'
 import AllPlayers from './components/AllPlayers';
 import NewPlayerForm from './components/NewPlayerForm';
 import './App.css'
@@ -8,10 +9,10 @@ import { fetchPlayers } from "./API/index";
 
 
 function App() {
-  // const [count, setCount] = useState(0)
 
   return (
     <>
+
       <div id='container'>
       <NavBar />
       <AllPlayers />
@@ -20,8 +21,9 @@ function App() {
       <fetchPlayers />
       
       </div>
+
     </>
-  )
+  );
 }
 
 export default App

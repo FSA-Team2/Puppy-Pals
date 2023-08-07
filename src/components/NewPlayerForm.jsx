@@ -1,16 +1,25 @@
+
 import { useState } from 'react';
+
 import { createPlayer } from '../API';
 
 const NewPlayerForm = () => {
   const [name, setName] = useState('');
   const [age, setAge] = useState('');
+
+  const [breed, setBreed] = useState('');
+
+
+
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     
     const newPlayerData = {
       name: name,
       age: age,
+
     };
+
     try {
       const createdPlayer = await createPlayer(newPlayerData);
       console.log('New player created:', createdPlayer);
@@ -18,6 +27,7 @@ const NewPlayerForm = () => {
       console.error('Error creating player:', error);
     }
   };
+
   return (
     <div>
       <h2>Create New Player</h2>
@@ -40,7 +50,9 @@ const NewPlayerForm = () => {
             onChange={(e) => setAge(e.target.value)}
           />
         </div>
+
         
+
         <button type="submit">Submit</button>
       </form>
     </div>

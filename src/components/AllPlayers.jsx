@@ -5,6 +5,7 @@ import { fetchPlayers } from "../API/index";
 
 const AllPlayers = () => {
   const [playersData, setPlayersData] = useState([]);
+
   useEffect(() => {
     async function fetchPlayersData() {
       try {
@@ -26,6 +27,7 @@ const AllPlayers = () => {
           </Link>
         </div>
       ))}
+
       {Array.isArray(playersData) ? (
         playersData.map((player) => (
           <div className="button" key={player.id}>
@@ -61,3 +63,4 @@ export default AllPlayers;
 
             </ul>
              */}
+
