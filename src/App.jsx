@@ -4,8 +4,8 @@ import NewPlayerForm from './components/NewPlayerForm';
 import './App.css'
 import NavBar from './components/NavBar';
 import SinglePlayer from './components/SinglePlayer';
-import FetchAllPlayers from './API';
-import RoutePaths from './components/Routers';
+import { fetchPlayers } from "./API/index";
+
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -17,8 +17,8 @@ function App() {
       <AllPlayers />
       <NewPlayerForm />
       <SinglePlayer />
-      <FetchAllPlayers />
-      <RoutePaths />
+      <fetchPlayers />
+      
       </div>
     </>
   )
