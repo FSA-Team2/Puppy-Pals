@@ -8,6 +8,7 @@ export const FetchAllPlayers = async () => {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
+      
     });
 
     const responseJson = await response.json();
