@@ -13,5 +13,5 @@ const SinglePlayer = () => {
     </div>
   );
 };
-
 export default SinglePlayer;
+

@@ -1,12 +1,14 @@
-//newPlayerForm.jsx is the component that renders the form to create a new player. It also handles the form submission and makes the API call to create the new player in the database.
 
-import React, { useState } from 'react';
+import { useState } from 'react';
+
 import { createPlayer } from '../API';
 
 const NewPlayerForm = () => {
   const [name, setName] = useState('');
   const [age, setAge] = useState('');
+
   const [breed, setBreed] = useState('');
+
 
 
   const handleFormSubmit = async (event) => {
@@ -15,7 +17,7 @@ const NewPlayerForm = () => {
     const newPlayerData = {
       name: name,
       age: age,
-      breed: breed,
+
     };
 
     try {
@@ -48,19 +50,13 @@ const NewPlayerForm = () => {
             onChange={(e) => setAge(e.target.value)}
           />
         </div>
-        <div>
-          <label htmlFor="breed">Breed:</label>
-          <input
-            type="text"
-            id="breed"
-            value={breed}
-            onChange={(e) => setBreed(e.target.value)}
-          />
-        </div>
+
+        
+
         <button type="submit">Submit</button>
       </form>
     </div>
   );
 };
-
 export default NewPlayerForm;
+

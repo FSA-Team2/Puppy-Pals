@@ -1,4 +1,5 @@
-//index.js is the entry point for the API folder. It exports all the functions that will be used to make API calls to the backend.
+const API = `https://fsa-puppy-bowl.herokuapp.com/api/2302-ACC-PT-WEB-PT-A/players`;
+
 
 //const API = `https://fsa-puppy-bowl.herokuapp.com/2302-acc-pt-web-pt-a/`;
 const API = 'https://fsa-puppy-bowl.herokuapp.com/api/2302-ACC-PT-WEB-PT-A/players';
@@ -12,6 +13,26 @@ export async function fetchPlayers() {
     throw error;
   }
 }
+
+
+      
+    export async function fetchPlayers() {
+      try {
+        const response = await fetch(API);
+
+    const responseJson = await response.json();
+
+    // console.log(responseJson);
+    const players = responseJson.data.players;
+    console.log(players);
+
+    return players;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+
 
 export async function createPlayer(playerData) {
   try {
@@ -28,4 +49,9 @@ export async function createPlayer(playerData) {
     console.error("Error creating player", error);
     throw error;
   }
+
 }
+
+export default fetchPlayers;
+
+
