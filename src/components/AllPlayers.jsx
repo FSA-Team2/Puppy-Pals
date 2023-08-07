@@ -5,6 +5,7 @@ import { fetchPlayers, deletePlayer } from "../API/index";
 
 const AllPlayers = () => {
   const [playersData, setPlayersData] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     async function fetchPlayersData() {
@@ -27,14 +28,26 @@ const AllPlayers = () => {
     }
   };
 
+  const filteredPlayers = playersData.filter((player) =>
+    player.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div>
       <h2>AllPlayers</h2>
-      {playersData.length === 0 ? (
-        <div>If you see this message. Cat Broke something...</div>
+      <div>
+        <input
+          type="text"
+          placeholder="Search by name..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+      </div>
+      {filteredPlayers.length === 0 ? (
+        <div>No players found.</div>
       ) : (
         <ul>
-          {playersData.map((player) => (
+          {filteredPlayers.map((player) => (
             <li key={player.id}>
               <Link to={`/players/${player.id}`}>
                 <img src={player.imageUrl} alt={player.name} />
