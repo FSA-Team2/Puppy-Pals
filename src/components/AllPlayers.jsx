@@ -1,53 +1,63 @@
 import { useState, useEffect } from "react";
-import { FetchAllPlayers } from "../API/index";
+import SinglePlayer from "./SinglePlayer";
+import { Routes, Route, Link } from "react-router-dom";
+import { fetchPlayers } from "../API/index";
 
-export default function AllPlayers() {
+const AllPlayers = () => {
   const [playersData, setPlayersData] = useState([]);
-  const [error, setError] = useState(null);
-
   useEffect(() => {
     async function fetchPlayersData() {
       try {
-        const data = await FetchAllPlayers();
-        setPlayersData(data.data);
-        console.log("players:", data);
+        const data = await fetchPlayers();
+        setPlayersData(data);
       } catch (error) {
-        console.error("Error fetching players:", error);
-        setError(error);
+        console.error("Beeeep Booop ", error);
       }
     }
-
     fetchPlayersData();
   }, []);
 
-  if (error) {
-    return <div>Error fetching players: {error.message}</div>;
-  }
-
   return (
-    <>
-      return (
-      <div>
-        {playersData.map((player, index) => {
-          return (
-            <div key={index}>
-              <h2>name: {player.name}</h2>
-              <h2>breed: {player.breed}</h2>
-
-              <hr />
-            </div>
-          );
-        })}
-        )
-        <hr />
-        <hr />
-        <hr />
-        <div>
-          <h2>name: {Object.name}</h2>
-          <h2>breed: {Object.breed}</h2>
+    <div>
+      {playersData.map((player) => (
+        <div className="button" key={player.id}>
+          <Link to={`/players/${player.id}`}>
+            <h4>{player.name}</h4>
+          </Link>
         </div>
-        <hr />
-      </div>
-    </>
+      ))}
+      {Array.isArray(playersData) ? (
+        playersData.map((player) => (
+          <div className="button" key={player.id}>
+            <Link to={`/players/${player.id}`}>
+              <h4>{player.name}</h4>
+            </Link>
+          </div>
+        ))
+      ) : (
+        <div>Loading...</div>
+      )}
+
+      <Routes>
+        <Route path="/players/:id" element={<SinglePlayer />} />
+        </Routes>
+    </div>
   );
-}
+};
+export default AllPlayers;
+ 2  
+      
+      
+      {/* return (
+      <div>
+        {playersData.map((player) => {
+          return (
+            <ul>
+
+
+            <li key={player.id}>{player.name}</li>
+
+
+
+            </ul>
+             */}
