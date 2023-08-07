@@ -35,3 +35,17 @@ export async function createPlayer(playerData) {
     throw error;
   }
 }
+
+export async function deletePlayer(playerId) {
+  try {
+    const response = await fetch(`${API}/${playerId}`, {
+      method: 'DELETE',
+    });
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error deleting player", error);
+    throw error;
+  }
+}
+

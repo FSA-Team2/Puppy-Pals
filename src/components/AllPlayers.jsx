@@ -18,6 +18,9 @@ const AllPlayers = () => {
     fetchPlayersData();
   }, []);
 
+
+
+
   return (
     <div>
       <h2>AllPlayers</h2>
@@ -31,6 +34,10 @@ const AllPlayers = () => {
                 <img src={player.imageUrl} alt={player.name} />
                 <h4>{player.name}</h4>
               </Link>
+              {/* Added this Link for the "Player Details" button */}
+              <Link to={`/players/${player.id}`}>
+                <button>Player Details</button>
+              </Link>
             </li>
           ))}
         </ul>
@@ -43,8 +50,3 @@ const AllPlayers = () => {
 };
 
 export default AllPlayers;
-
-
-
-
-

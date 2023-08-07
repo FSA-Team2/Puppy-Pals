@@ -1,25 +1,20 @@
 
 import { Link } from "react-router-dom";
 
-
 const NavBar = () => {
   return (
     <div id="navlinks">
       <nav>
-        <ul>
+        <ul style={{ listStyle: 'none', padding: 0 }}>
           <li>
             <Link to="/allPlayers" className="allPlayersLink">
-              All Players
+              Home
             </Link>
           </li>
-          <li>
-            <Link to="/NavBar" className="NavBarLinks">
-              NavBar
-            </Link>
-          </li>
+          <li></li>
           <li>
             <Link to="/NewPlayerForm" className="NewPlayersForm">
-              New Player Form
+              New Player
             </Link>
           </li>
           <li>
@@ -28,9 +23,6 @@ const NavBar = () => {
             </Link>
           </li>
           <li>
-            <Link to="/fetchAllPlayers" className="fetchAllPlayers">
-              Fetch All Players
-            </Link>
           </li>
         </ul>
       </nav>
@@ -39,3 +31,7 @@ const NavBar = () => {
 };
 
 export default NavBar;
+
+
+
+
