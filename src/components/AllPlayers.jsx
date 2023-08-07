@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import SinglePlayer from "./SinglePlayer";
 import { Routes, Route, Link } from "react-router-dom";
-import { fetchPlayers } from "../API/index";
+import { fetchPlayers, deletePlayer } from "../API/index";
 
 const AllPlayers = () => {
   const [playersData, setPlayersData] = useState([]);
@@ -18,8 +18,14 @@ const AllPlayers = () => {
     fetchPlayersData();
   }, []);
 
-
-
+  const handleDelete = async (id) => {
+    try {
+      await deletePlayer(id);
+      setPlayersData(playersData.filter((player) => player.id !== id));
+    } catch (error) {
+      console.error("Error deleting player: ", error);
+    }
+  };
 
   return (
     <div>
@@ -34,10 +40,10 @@ const AllPlayers = () => {
                 <img src={player.imageUrl} alt={player.name} />
                 <h4>{player.name}</h4>
               </Link>
-              {/* Added this Link for the "Player Details" button */}
               <Link to={`/players/${player.id}`}>
                 <button>Player Details</button>
               </Link>
+              <button onClick={() => handleDelete(player.id)}>Delete</button>
             </li>
           ))}
         </ul>
