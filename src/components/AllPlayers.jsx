@@ -1,57 +1,53 @@
-// import React from 'react';
-import SinglePlayer from "./SinglePlayer";
-import { Routes, Route } from "react-router-dom";
-import players from "../API";
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from "react";
+import { FetchAllPlayers } from "../API/index";
 
-const AllPlayers = () => {
-  const [players, setPlayers] = useState([]);
+export default function AllPlayers() {
+  const [playersData, setPlayersData] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    const apiUrl = `https://fsa-puppy-bowl.herokuapp.com/2302-acc-pt-web-pt-a/`;
-
-    async function fetchP() {
+    async function fetchPlayersData() {
       try {
-        const response = await players(apiUrl);
-        // const data = await response.json();
-
-        setPlayers(response);
+        const data = await FetchAllPlayers();
+        setPlayersData(data.data);
+        console.log("players:", data);
       } catch (error) {
-        console.error(error);
+        console.error("Error fetching players:", error);
+        setError(error);
       }
     }
-    fetchP();
+
+    fetchPlayersData();
   }, []);
 
+  if (error) {
+    return <div>Error fetching players: {error.message}</div>;
+  }
+
   return (
-    <div>
-    {
-      players.map((players) => {
-        return (
-          <div className="button" onClick={() => setPlayers(players.id)} key={players.is}><h4>{players.name}</h4>
+    <>
+      return (
+      <div>
+        {playersData.map((player, index) => {
+          return (
+            <div key={index}>
+              <h2>name: {player.name}</h2>
+              <h2>breed: {player.breed}</h2>
 
-          
-          
-      <Routes>
-       <Route path="/" element={<AllPlayers />} />
-        <Route path="/players/:id" element={<SinglePlayer />} />
-      </Routes>
-    </div> 
-
-
-
+              <hr />
+            </div>
+          );
+        })}
         )
-      })
-    }
-    </div>
-
-
-
-
-
-
-     
-   );
- };
-
-export default AllPlayers;
+        <hr />
+        <hr />
+        <hr />
+        <div>
+          <h2>name: {Object.name}</h2>
+          <h2>breed: {Object.breed}</h2>
+        </div>
+        <hr />
+      </div>
+    </>
+  );
+}
