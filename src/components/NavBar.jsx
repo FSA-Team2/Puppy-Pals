@@ -1,4 +1,4 @@
-
+import React from "react";
 import { Link } from "react-router-dom";
 
 const NavBar = () => {
@@ -11,18 +11,10 @@ const NavBar = () => {
               Home
             </Link>
           </li>
-          <li></li>
           <li>
             <Link to="/NewPlayerForm" className="NewPlayersForm">
               New Player
             </Link>
-          </li>
-          <li>
-            <Link to="/SinglePlayer" className="SinglePlayer">
-              Single Player
-            </Link>
-          </li>
-          <li>
           </li>
         </ul>
       </nav>
@@ -31,7 +23,3 @@ const NavBar = () => {
 };
 
 export default NavBar;
-
-
-
-

@@ -1,12 +1,14 @@
 //App.jsx is the main file that renders all the components
 import React from 'react'
-import './App.css'
 import NavBar from './components/NavBar';
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import AllPlayers from './components/AllPlayers';
 import NewPlayerForm from './components/NewPlayerForm';
 import SinglePlayer from './components/SinglePlayer';
 import { fetchPlayers } from "./API/index";
+import './App.css'
+import './index.css'
+
 
 
 function App() {
