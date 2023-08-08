@@ -26,24 +26,24 @@ const SinglePlayer = () => {
   }
 
   return (
-    <div>
+    <div className='returnDetails'>
       <h1>Player Detail - {player.name}</h1>
       <img src={player.imageUrl} alt={player.name} />
-      <p>name: {player.name}</p>
+      <p>Name: {player.name}</p>
       <p>Breed: {player.breed}</p>
       <p>Status: {player.status}</p>
 
       {showDetails ? (
-        <div>
+        <div className='showPlayerDetails'>
           <p>Team ID: {player.teamId}</p>
           <p>Team Name: {player.teamName}</p>
           <p>Created At: {player.createdAt}</p>
           <p>Updated At: {player.updatedAt}</p>
         </div>
       ) : (
-        <button onClick={() => setShowDetails(true)}>Show Details</button>
+        <button className='detailsButton' onClick={() => setShowDetails(true)}>Show Details</button>
       )}
-      <Link to="/">Back to All Players</Link>
+      <button className='goBack'>Back to All Players<Link to="/"></Link></button> 
     </div>
   );
 };
