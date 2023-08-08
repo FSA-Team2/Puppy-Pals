@@ -43,7 +43,8 @@ const SinglePlayer = () => {
       ) : (
         <button className='detailsButton' onClick={() => setShowDetails(true)}>Show Details</button>
       )}
-      <button className='goBack'>Back to All Players<Link to="/"></Link></button> 
+      <button className='goBack'>
+        <Link to="/">Back to All Players</Link></button> 
     </div>
   );
 };
