@@ -1,13 +1,13 @@
-import { useState, useEffect } from "react";
+import React from "react";
 import SinglePlayer from "./SinglePlayer";
 import { Routes, Route, Link } from "react-router-dom";
 import { fetchPlayers, deletePlayer } from "../API/index";
 
 const AllPlayers = () => {
-  const [playersData, setPlayersData] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [playersData, setPlayersData] = React.useState([]);
+  const [searchTerm, setSearchTerm] = React.useState('');
 
-  useEffect(() => {
+  React.useEffect(() => {
     async function fetchPlayersData() {
       try {
         const data = await fetchPlayers();
@@ -34,7 +34,7 @@ const AllPlayers = () => {
 
   return (
     <div>
-      <h2>AllPlayers</h2>
+      <h2>Puppy Bowl Players</h2>
       <div>
         <input
           type="text"
@@ -46,17 +46,17 @@ const AllPlayers = () => {
       {filteredPlayers.length === 0 ? (
         <div>No players found.</div>
       ) : (
-        <ul>
+        <ul className="card-list">
           {filteredPlayers.map((player) => (
-            <li key={player.id}>
-              <Link to={`/players/${player.id}`}>
+            <li key={player.id} className="card">
+              <Link to={`/players/${player.id}`} className="card-link">
                 <img src={player.imageUrl} alt={player.name} />
                 <h4>{player.name}</h4>
               </Link>
-              <Link to={`/players/${player.id}`}>
-                <button>Player Details</button>
+              <Link to={`/players/${player.id}`} className="card-link">
+                <button className="card-button">Player Details</button>
               </Link>
-              <button onClick={() => handleDelete(player.id)}>Delete</button>
+              <button onClick={() => handleDelete(player.id)} className="card-button">Delete</button>
             </li>
           ))}
         </ul>
