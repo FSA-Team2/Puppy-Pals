@@ -41,3 +41,31 @@
   color: #888;
 }
 
+div.returnDetails {
+  background-color: rgb(19, 80, 91);
+  border: solid 4px black;
+  color: rgb(215, 217, 206);
+  font-family: serif;
+  
+
+}
+a.SinglePlayer {
+  display: none;
+}
+
+button.goBack {
+background-color: rgb(4, 4, 4);
+border: solid 2px rgb(215, 217, 206);
+color: rgb(215, 217, 206);
+}
+
+button.detailsButton {
+  background-color: rgb(4, 4, 4);
+  border: solid 2px rgb(215, 217, 206);
+  color: rgb(215, 217, 206);
+}
+p {
+  color: black;
+  font-size: large;
+  font-weight: bold;
+}
